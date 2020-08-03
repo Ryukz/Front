@@ -1,0 +1,68 @@
+<app-navbar></app-navbar>
+<video autoplay muted loop id="myVideo">
+  <source src="https://cdn.videvo.net/videvo_files/videos/170724_37_Flyingoversurf.mp4" type="video/mp4">
+</video>
+<div class="container p-5">
+  <h1 class="display-3  mb-5 text-white">{{ blog.title }}</h1>
+  <img
+    *ngIf="blog.imageurl"
+    [src]="blog.imageurl"
+    class="img-fluid  mb-5"
+  />
+
+  <div class="text-white  mb-3" style="font-size: 1.4rem;">
+    {{ blog.blog }}
+  </div>
+
+  <div class="text-white text-right mb-3">
+    {{ blog.date | date: "mediumDate" }}
+  </div>
+
+  <div class="text-right text-white" style="font-size: 1rem">
+    <a href="/home/user-details/{{ blog.user.id }}"
+      >--{{ blog.user.userName }}</a
+    >
+  </div>
+</div>
+
+<!--comment-->
+<div
+  class="container-fluid position-relative bg-light p-5"
+  style="bottom: 0px;"
+>
+  <div class="container p-5">
+    <h1 class="display-5 border-bottom pb-2 font-weight-bold">Comments</h1>
+    <div *ngFor="let i of comments">
+      <div class="border-bottom d-flex justify-content-between">
+        <div class="p-3">
+          <div>
+            <a href="/home/user-details/">{{ i.user.userName }}</a>
+          </div>
+          <div>
+            {{ i.comment }}
+          </div>
+        </div>
+        <div *ngIf="superAccess" class="bg-simple text-center p-3" (click)="deleteComment(i.id)">Delete</div>
+      </div>
+    </div>
+  </div>
+
+  <!--for adding a comment-->
+  <div class="container p-5">
+    <h2>Add a comment..</h2>
+    <div>
+      <textarea
+        class="p-5 text-area-edit"
+        [(ngModel)]="comment"
+        [ngModelOptions]="{ standalone: true }"
+      ></textarea>
+    </div>
+    <button
+      type="button"
+      class="btn btn-info rounded-0 p-3 btn-edit font-weight-bold text-left"
+      (click)="addAComment()"
+    >
+      Post
+    </button>
+  </div>
+</div>

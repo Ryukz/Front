@@ -1,0 +1,85 @@
+<app-navbar [homepageActive]="false"></app-navbar>
+<video autoplay muted loop id="myVideo">
+  <source src="https://cdn.videvo.net/videvo_files/videos/180607_A_101.mp4" type="video/mp4">
+</video>
+<div class="container-fluid ">
+  <div class="row">
+    <div class="col-sm-6 p-5">
+      <div class="conatiner p-5">
+        <h1 class="display-4 orange-left-border pl-4 text-white">Followers</h1>
+        <div *ngFor="let i of followers" class="container-fluid mt-5">
+          <div
+            class="container-fluid d-flex mb-2 p-3 border rounded-lg bg-white justify-content-between"
+          >
+            <div>
+              <div>
+                <a href="/home/user-details/{{ i.userWhoSentRequest.id }}">{{
+                  i.userWhoSentRequest.userName
+                }}</a>
+              </div>
+              <div class="text-muted">
+                {{ i.userWhoSentRequest.firstName }}
+                {{ i.userWhoSentRequest.lastName }}
+              </div>
+            </div>
+            <div>
+              <button
+                type="button"
+                class="btn btn-primary pl-3 pr-3 rounded-circle"
+                (click)="removeFromFollowers(i.userWhoSentRequest.id)"
+              >
+                X
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        *ngIf="followers.length == 0"
+        class="container text-center p-5 font-weight-bold"
+      >
+        Your follow list is empty !!
+      </div>
+    </div>
+
+    <div class="col-sm-6 p-5">
+      <div class="conatiner p-5">
+        <h1 class="display-4 orange-left-border pl-4 text-white">Following</h1>
+        <div *ngFor="let i of following" class="container-fluid mt-5">
+          <div
+            class="container-fluid d-flex mb-2 p-3 border rounded-lg bg-white justify-content-between"
+          >
+            <div>
+              <div>
+                <a href="/home/user-details/{{ i.userWhoReceiveRequest.id }}">{{
+                  i.userWhoReceiveRequest.userName
+                }}</a>
+              </div>
+              <div class="text-muted">
+                {{ i.userWhoReceiveRequest.firstName }}
+                {{ i.userWhoReceiveRequest.lastName }}
+              </div>
+            </div>
+            <div>
+              <button
+                type="button"
+                class="btn btn-primary pl-3 pr-3 rounded-circle"
+                (click)="unFollow(i.userWhoReceiveRequest.id)"
+              >
+               X
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        *ngIf="following.length == 0"
+        class="container text-center p-5 font-weight-bold"
+      >
+        Your following list is empty !!
+      </div>
+    </div>
+  </div>
+</div>

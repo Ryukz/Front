@@ -1,0 +1,86 @@
+<video autoplay muted loop id="myVideo">
+  <source src="https://cdn.videvo.net/videvo_files/video/free/2019-09/originalContent/190828_27_SuperTrees_HD_17.mp4" type="video/mp4">
+</video>
+<div class="container-fluid ">
+  <div class="container-fluid p-3  shadow sticky-top text-white">
+    <div class="container-fluid d-flex justify-content-between mb-3">
+      <div>
+        <input
+          type="text"
+          placeholder="Title"
+          class="p-2"
+          id="title"
+          [(ngModel)]="title"
+          [ngModelOptions]="{ standalone: true }"
+        />
+      </div>
+      <div>
+        <div class="font-weight-bolder">
+          <h3>We are glad you started writing your blog !!</h3>
+        </div>
+      </div>
+      <div>
+        <input
+          type="text"
+          placeholder="Category"
+          id="category"
+          class="p-2"
+          [(ngModel)]="category"
+          [ngModelOptions]="{ standalone: true }"
+        />
+      </div>
+    </div>
+
+    <div class="container-fluid d-flex">
+      <div class="mr-4">
+        <input
+          type="text"
+          placeholder="Search description"
+          id="sDes"
+          class="p-2 search-des-width"
+          [(ngModel)]="sDes"
+          [ngModelOptions]="{ standalone: true }"
+        />
+      </div>
+      <div>
+        <input
+          type="text"
+          class="p-2"
+          id="imageUrl"
+          placeholder="Image Url (Optional)"
+          [(ngModel)]="imageUrl"
+          [ngModelOptions]="{ standalone: true }"
+        />
+      </div>
+      <div class="ml-auto">
+        <div class="custom-control custom-switch">
+          <input type="checkbox" class="custom-control-input" id="switch1" (click)="makePrivate()"/>
+          <label class="custom-control-label" for="switch1">Make Private</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container p-5 text-center">
+    <textarea
+      class="p-5 edit-textarea shadow"
+      placeholder="Start your blog.."
+      id="actualBlog"
+      [(ngModel)]="actualBlog"
+      [ngModelOptions]="{ standalone: true }"
+    ></textarea>
+  </div>
+</div>
+
+<div class="container-fluid p-3 bg-rgba position-sticky" style="bottom: 0px;">
+  <div class="d-flex justify-content-around">
+    <div class="text-light">
+      Take your time and then click here to add your blog to skyline
+    </div>
+    <div>
+      <button type="button" class="btn btn-success" (click)="addBlog()">
+        Submit
+      </button>
+    </div>
+  </div>
+</div>

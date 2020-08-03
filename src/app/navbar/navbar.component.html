@@ -1,0 +1,74 @@
+<nav class="navbar navbar-expand-md  sticky-top navbar-dark text-white">
+  <!-- Brand -->
+  <a class="navbar-brand bottom-border ml-3" href="#" style="font-size: 1.8rem"
+    ><span class="text-white">ken</span><span class="text-info">way</span></a
+  >
+
+  <!-- Toggler/collapsibe Button -->
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#collapsibleNavbar"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <div *ngIf="homepageActive" class="m-auto d-flex black-border">
+      <input
+        type="text"
+        placeholder="Search anything..."
+        class="search-input"
+        [(ngModel)]="search"
+        [ngModelOptions]="{ standalone: true }"
+        style="color: white;"
+      />
+      <button type="button" class="no-border p-2" (click)="searchBlog()">
+        <i class="material-icons text-white">
+          search
+        </i>
+      </button>
+    </div>
+
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <div>
+          <abbr title="User Details">
+            <a class="nav-link" href="/home/user-details/{{ id }}"
+              ><i class="material-icons text-white">
+                account_circle
+              </i></a
+            >
+          </abbr>
+        </div>
+      </li>
+      <li class="nav-item ml-3">
+        <div>
+          <abbr title="Create Blog">
+            <a class="nav-link" href="/home/addBlog"
+              ><i class="material-icons text-white">
+                add
+              </i></a
+            >
+          </abbr>
+        </div>
+      </li>
+      <li class="nav-item ml-3">
+        <div>
+          <abbr title="Logout">
+            <button
+              class="nav-link text-white no-border-without-hover"
+              (click)="logout()"
+            >
+              <i class="material-icons">
+                logout
+              </i>
+            </button>
+          </abbr>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>

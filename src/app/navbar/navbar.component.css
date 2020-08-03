@@ -1,0 +1,36 @@
+.navbar{
+    height: 80px;
+}
+.bottom-border{
+    border-bottom: 2px solid #f88020;
+}
+.search-input{
+    background: none;
+    color: gray;
+    outline: none;
+    border: none;
+    width: 400px;
+}
+.no-border{
+    border: none;
+    background: none;
+    outline: none;
+}
+.no-border:hover{
+    background: rgba(251, 255, 255, 0.1);
+}
+.black-border{
+    border-bottom: 2px solid white;
+}
+.no-border-without-hover{
+    border: none;
+    background: none;
+    outline: none;
+}
+.navbar-nav > li:hover{
+    background:#f88020;
+}
+::placeholder{
+  color: white;
+}
+

@@ -1,0 +1,68 @@
+.background-image {
+  background: url("https://www.bluesignal.com/wp-content/uploads/2018/12/videoblocks-2d-animated-blue-loopable-downtown-city-skyline_sxah_d60e_thumbnail-full01.png");
+  background-size: 100% 100%;
+  min-height: 100%;
+  height: auto;
+  position: fixed;
+}
+.login-heading {
+  font-size: 3.5rem;
+}
+.form-width {
+  width: 500px;
+}
+label {
+  font-size: 1.2rem;
+}
+.btn-blue {
+  background: #64b2cd;
+  cursor: default;
+  width: inherit;
+}
+.btn-blue:hover {
+  background: #3c70a4;
+}
+.bottom-blue-border {
+  border-bottom: 4px solid #64b2cd;
+}
+.grey-border {
+  border: 1px solid #e5e5e5;
+}
+input:focus {
+  border: 1px solid #3c70a4;
+}
+.rem-8 {
+  font-size: 1.2rem;
+}
+.forget-pwd:hover{
+  color: #3c70a4;
+  cursor: pointer;
+  border-bottom: 2px solid #3c70a4;
+}
+
+@media screen and (max-width: 700px) {
+  .form-width {
+    width: 90%;
+  }
+  .background-image {
+    background: url("https://www.bluesignal.com/wp-content/uploads/2018/12/videoblocks-2d-animated-blue-loopable-downtown-city-skyline_sxah_d60e_thumbnail-full01.png");
+    background-size: 500% 100%;
+    min-height: 100%;
+    height: auto;
+    position: fixed;
+  }
+}
+
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+}
+
+.bottom-border{
+  border-bottom: 4px solid #f88020;
+}
+

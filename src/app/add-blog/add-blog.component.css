@@ -1,0 +1,35 @@
+.bg-simple{
+    background: #eeeeee;
+}
+input{
+    background: none;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid white;
+    color: white;
+}
+.search-des-width{
+    width: 400px;
+}
+textarea{
+    outline: none;
+}
+.edit-textarea{
+    height: 1500px;
+    width: 100%;
+}
+.bg-rgba{
+    background: rgba(0, 0, 0, 0.7);
+}
+::placeholder{
+  color: white;
+}
+
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+}

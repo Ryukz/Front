@@ -1,0 +1,104 @@
+<video autoplay muted loop id="myVideo">
+  <source src="https://cdn.videvo.net/videvo_files/videos/170724_37_Flyingoversurf.mp4" type="video/mp4">
+</video>
+<div class="float-right">
+  <a class="navbar-brand bottom-border ml-3 mt-3" href="#" style="font-size: 2.5rem;font-weight: bold"
+  ><span class="text-white">ken</span><span class="text-info">way</span></a
+  >
+</div>
+<div class="container-fluid p-5">
+
+  <!--alert-->
+  <div
+    *ngIf="!validateUser"
+    class="alert alert-danger alert-dismissible fade show text-center"
+  >
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>Username or password can't be recognized</strong>
+  </div>
+  <!--home button-->
+  <div class="container-fluid text-left p-3">
+    <abbr title="Go to Homepage"
+      ><a href="/home"
+        ><i class="material-icons text-white">
+          home
+        </i></a
+      ></abbr
+    >
+  </div>
+  <!--heading and subheading div-->
+  <div class="container d-flex justify-content-center mb-5">
+    <div class="login-heading bottom-blue-border" style="color: white;font-weight: bold">Log In</div>
+  </div>
+
+  <div class="container d-flex justify-content-center">
+    <!--form block-->
+    <div class="form-width">
+      <!--email or mobile-->
+      <div class="d-flex flex-column mb-4">
+        <label style="color: white">Email</label>
+        <input
+          type="email"
+          placeholder="Email"
+          class="p-2 grey-border"
+          name="email"
+          [(ngModel)]="email"
+          [ngModelOptions]="{ standalone: true }"
+        />
+      </div>
+      <!--passoword-->
+      <div class="d-flex flex-column mb-4">
+        <label style="color: white" >Password</label>
+        <input
+          [type]="passwordType"
+          placeholder="Password"
+          class="p-3 grey-border"
+          name="password"
+          [(ngModel)]="password"
+          [ngModelOptions]="{ standalone: true }"
+        />
+      </div>
+      <!--show password-->
+      <div class="custom-control custom-switch mb-4">
+        <input
+          type="checkbox"
+          class="custom-control-input"
+          id="switch1"
+          (click)="showHidePassword()"
+        />
+        <label class="custom-control-label font-weight-bold" for="switch1"
+               style="color: white" >Show Password</label
+        >
+      </div>
+
+      <!--login button-->
+      <button
+        type="button"
+        class="btn btn-blue text-light text-left pt-3 pb-3 font-weight-bolder rounded-0 mb-3"
+        (click)="login()"
+      >
+        <span *ngIf="loading" class="spinner-grow spinner-grow-sm mr-3"></span>
+        LOG IN
+      </button>
+
+      <!--new sign in button-->
+      <div class="mb-1 rem-8" style="color: white">
+        New to our website ?
+        <a href="/signup" class="font-weight-bold text-info" >Sign Up</a>
+      </div>
+
+      <!--forget password-->
+      <div
+        class="container-fluid font-weight-bolder rem-8 forget-pwd"
+        (click)="forgetPassword()" style="color: white"
+      >
+        Forget Password
+      </div>
+    </div>
+  </div>
+
+  <!--forget password loading-->
+  <div *ngIf="forgetLoading" class="container-fluid">
+    <div class="spinner-border text-danger position-fixed" style="left: 50%; top: 50%;"></div>
+  </div>
+</div>

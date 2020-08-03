@@ -1,0 +1,172 @@
+
+<video autoplay muted loop id="myVideo">
+  <source src="https://cdn.videvo.net/videvo_files/videos/462343546.mp4" type="video/mp4">
+</video>
+
+<div class="container-fluid position-relative round" >
+  <div class="float-right">
+    <a class="navbar-brand bottom-border ml-3 mt-3" href="#" style="font-size: 2.5rem;font-weight: bold"
+    ><span class="text-white">ken</span><span class="text-info">way</span></a
+    >
+  </div>
+<!--  <div class="container-fluid img-background position-absolute">-->
+    <div class="container-fluid p-4 text-light" style="width: 500px" >
+      <i class="material-icons arrow-size rounded-circle" (click)="moveToHome()"
+        >keyboard_arrow_left</i
+      >
+      <h1 class=" signup-heading bottom-blue-border p-2" style="font-weight: bold;">Sign Up</h1>
+      <h4 class="display-5">and write your mind out</h4>
+    </div>
+<!--  </div>-->
+
+  <div class="container-fluid position-absolute d-flex custom-pos" style="opacity: 0.9">
+    <div class="container p-4 bg-custom shadow-lg border rounded">
+      <div class="d-flex flex-column p-5">
+        <!--Firstname and lastname-->
+        <div class="d-flex justify-content-between mb-4">
+          <div>
+            <div class="mb-1 small-font  text-dark">
+              <i class="text-danger font-weight-bold">* </i>Firstname
+            </div>
+            <div>
+              <input
+                type="text"
+                placeholder="Firstname"
+                class="p-2 gray-border round form-control ng-touched ng-valid"
+                [(ngModel)]="firstName"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+          </div>
+
+          <div>
+            <div class="mb-1 small-font text-dark">
+              <i class="text-danger font-weight-bolder">* </i>Lastname
+            </div>
+            <div>
+              <input
+                type="text"
+                placeholder="Lastname"
+                class="p-2 gray-border round form-control ng-touched ng-valid"
+                [(ngModel)]="lastName"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!--username-->
+        <div class="mb-4">
+          <div class="mb-1 small-font text-dark">
+            <i class="text-danger font-weight-bolder ">* </i>Username
+          </div>
+          <input
+            type="text"
+            placeholder="Username"
+            class="p-2 input-width gray-border round form-control ng-touched ng-valid"
+            [(ngModel)]="userName"
+            [ngModelOptions]="{ standalone: true }"
+          />
+        </div>
+
+        <!--email-->
+        <div class="mb-4">
+          <div class="mb-1 small-font text-dark">
+            <i class="text-danger font-weight-bolder">* </i>Email
+          </div>
+          <input
+            type="email"
+            placeholder="Email"
+            class="p-2 input-width gray-border round form-control ng-touched ng-valid"
+            [(ngModel)]="email"
+            [ngModelOptions]="{ standalone: true }"
+          />
+        </div>
+
+        <!--mobile-->
+        <div class="mb-4">
+          <div class="mb-1 small-font text-dark ">
+            <i class="text-danger font-weight-bolder round">* </i>Enter Mobile Number
+          </div>
+          <div class="input-group input-width">
+            <div class="input-group-prepend bg-white">
+              <span class="input-group-text rounded-0 gray-border bg-white"
+                >+91</span
+              >
+            </div>
+            <input
+              type="text"
+              placeholder="Mobile number"
+              name="mobile"
+              maxlength="10"
+              minlength="10"
+              [(ngModel)]="mobile"
+              [ngModelOptions]="{ standalone: true }"
+              class="p-2 gray-border round form-control ng-touched ng-valid"
+              style="width: 500px;"
+            />
+          </div>
+        </div>
+
+        <!--password-->
+        <div class="mb-4">
+          <div class="mb-1 small-font text-dark">
+            <i class="text-danger font-weight-bolder round">* </i>Password
+          </div>
+          <input
+            type="password"
+            placeholder="Password"
+            class="p-2 input-width gray-border round form-control ng-touched ng-valid"
+            [(ngModel)]="password"
+            [ngModelOptions]="{ standalone: true }"
+          />
+        </div>
+
+        <!--bio-->
+        <div class="mb-4">
+          <div class="mb-1 small-font">
+            Your bio
+          </div>
+          <textarea
+            rows="5"
+            class="p-2 input-width gray-border round form-control ng-touched ng-valid"
+            [(ngModel)]="bio"
+            [ngModelOptions]="{ standalone: true }"
+          ></textarea>
+        </div>
+
+        <div class="mb-2 rem-8">
+          Already a member ?
+          <a href="/login" class="font-weight-bold text-info">Log In</a>
+        </div>
+
+        <!--button-->
+        <button
+          type="button"
+          class="btn btn-info rounded-0 p-3 text-left font-weight-bolder"
+          (click)="signIn()"
+        >
+          <span
+            *ngIf="loading"
+            class="spinner-grow spinner-grow-sm mr-3"
+          ></span>
+          SIGN IN
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,270 @@
+<video autoplay muted loop id="myVideo">
+  <source src="https://cdn.videvo.net/videvo_files/video/free/2019-09/originalContent/190828_27_SuperTrees_HD_17.mp4" type="video/mp4">
+</video>
+<app-navbar [homepageActive]="false"></app-navbar>
+
+<div class="container-fluid p-5">
+  <div class="container-fluid d-flex">
+    <div class="container-fluid">
+      <h1 class="display-4 text-capitalize mb-5 text-white">
+        {{ firstName }} {{ lastName }}
+      </h1>
+      <div class=" font-weight-bold mb-2 text-white ">
+        {{ userName }}
+      </div>
+      <div class=" mb-5 text-white">{{ bio }}</div>
+      <div class="d-flex mb-2">
+        <div class="mr-2 text-white"><i class="material-icons">email</i></div>
+        <div class="text-white">{{ email }}</div>
+      </div>
+      <div class="d-flex mb-2">
+        <div class="mr-2 text-white"><i class="material-icons">call</i></div>
+        <div class="text-white">{{ mobile }}</div>
+      </div>
+    </div>
+
+    <div class=" p-5">
+      <div class="d-flex">
+        <div class="mr-5 text-white">
+          <h1 class="display-5 text-center text-white">{{ blogs.length }}</h1>
+          <div class="text-white text-center">Blogs</div>
+        </div>
+        <div class="mr-5" (click)="getFollowers()">
+          <h1 class="display-5 text-center text-white">{{ followersLength }}</h1>
+          <div class="text-white text-center">Followers</div>
+        </div>
+        <div>
+          <h1 class="display-5 text-center text-white" (click)="getFollowing()">{{ followingLength }}</h1>
+          <div class="text-white text-center">Following</div>
+        </div>
+      </div>
+
+      <div *ngIf="!superAccess">
+        <button
+          type="button"
+          class="btn btn-dark rounded-0 p-3 mt-5"
+          style="width: 100%;"
+          id="followButton"
+          (click)="follow()"
+        >
+          Follow
+        </button>
+      </div>
+      <div *ngIf="superAccess && requests.length != 0" class="dropdown">
+        <button
+          type="button"
+          class="btn btn-warning rounded-0 p-3 mt-5"
+          style="width: 100%"
+          data-toggle="dropdown"
+        >
+          Show Requests
+        </button>
+        <div class="dropdown-menu request-dropdown">
+          <div *ngFor="let i of requests">
+            <div class="p-2 border d-flex">
+              <div class="mr-4">
+                <div>{{ i.userWhoSentRequest.userName }}</div>
+                <div style="font-size: 0.8rem;">
+                  {{ i.userWhoSentRequest.firstName }}
+                  {{ i.userWhoSentRequest.lastName }}
+                </div>
+              </div>
+              <div>
+                <button
+                  type="button"
+                  class="btn btn-success rounded-0"
+                  (click)="acceptRequest(i.userWhoSentRequest.id)"
+                >
+                  Accept
+                </button>
+              </div>
+              <div>
+                <button
+                  type="button"
+                  class="btn btn-danger rounded-0"
+                  (click)="rejectRequest(i.userWhoSentRequest.id)"
+                >
+                  Reject
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--edit button-->
+  <div *ngIf="superAccess" class="container-fluid text-center">
+    <button
+      type="button"
+      class="p-3 btn btn-info rounded-0 font-weight-bolder mt-5 btn-width"
+      (click)="editProfile()"
+    >
+      Edit Profile
+    </button>
+  </div>
+
+  <div class="mt-5 container-fluid bg-light shadow p-5">
+    <h1 class="display-5 pl-2 front-orange-border">{{ userName }} Blogs</h1>
+    <div class="container">
+      <div
+        *ngFor="let i of blogs; let ind = index"
+        class="container-fluid mr-4"
+      >
+        <div>
+          <div class="container p-4 border mt-5 mb-4 bg-white">
+            <div *ngIf="superAccess" class="text-right dropdown">
+              <button
+                type="button"
+                class="btn btn-light rounded-circle"
+                data-toggle="dropdown"
+              >
+                <i class="material-icons">
+                  keyboard_arrow_down
+                </i>
+              </button>
+              <div class="dropdown-menu">
+                <button
+                  class="dropdown-item"
+                  data-toggle="modal"
+                  data-target="#myModal"
+                  (click)="editBlog(i.blogId)"
+                >
+                  Edit Blog
+                </button>
+                <button class="dropdown-item" (click)="deleteBlog(i.blogId)">
+                  Delete Blog
+                </button>
+              </div>
+            </div>
+            <a href="/home/display-blog/{{ i.blogId }}">
+              <h2
+                class="heading-font-size  font-weight-bolder text-center"
+              >
+                {{ i.title }}
+              </h2></a
+            >
+
+            <img
+              *ngIf="i.imageurl"
+              src="{{ i.imageurl }}"
+              class="img-fluid img-size"
+            />
+            <div class="container text-muted  blog-overflow">
+              {{ i.blog }}
+            </div>
+
+            <div class="container bg-light p-3 d-flex mt-5">
+              <div (click)="likeBlog(i.blogId)">
+                <img
+                  [src]="disliked"
+                  class="img-fluid icon-size"
+                  id="{{ i.blogId }}"
+                />
+                <div class="text-muted">{{ i.likes }} Likes</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--<img-->
+<!--  src="https://images.unsplash.com/photo-1534298261662-f8fdd25317db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"-->
+<!--  class="img-fluid position-absolute bg-img"-->
+<!--/>-->
+
+
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Edit Blog</h4>
+        <button type="button" class="close" data-dismiss="modal">
+          &times;
+        </button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="form-group">
+          <input
+            type="text"
+            placeholder="Title"
+            class="p-2 form-control"
+            id="title"
+            [(ngModel)]="title"
+            [ngModelOptions]="{ standalone: true }"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            placeholder="Category"
+            id="category"
+            class="p-2 form-control"
+            [(ngModel)]="category"
+            [ngModelOptions]="{ standalone: true }"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            placeholder="Search description"
+            id="sDes"
+            class="p-2 search-des-width form-control"
+            [(ngModel)]="sDes"
+            [ngModelOptions]="{ standalone: true }"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            class="p-2 form-control"
+            id="imageUrl"
+            placeholder="Image Url (Optional)"
+            [(ngModel)]="imageUrl"
+            [ngModelOptions]="{ standalone: true }"
+          />
+        </div>
+        <div class="custom-control custom-switch">
+          <input
+            type="checkbox"
+            class="custom-control-input"
+            id="switch1"
+            [(ngModel)]="boolPrivate"
+            [ngModelOptions]="{ standalone: true }"
+            (click)="makePrivate()"
+          />
+          <label class="custom-control-label" for="switch1">Make Private</label>
+        </div>
+
+        <div class="mt-3">
+          <textarea
+            class="p-5 edit-textarea shadow"
+            placeholder="Start your blog.."
+            id="actualBlog"
+            [(ngModel)]="actualBlog"
+            [ngModelOptions]="{ standalone: true }"
+          ></textarea>
+        </div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-warning rounded-0"
+          (click)="updateBlog()"
+        >
+          Update
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

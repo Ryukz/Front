@@ -1,0 +1,57 @@
+.btn-width {
+  width: 500px;
+}
+.bg-img {
+  z-index: -1;
+  top: 0px;
+  height: 100%;
+  width: 100%;
+  opacity: 0.6;
+}
+.front-orange-border {
+  border-left: 6px solid orange;
+}
+.dropdown-item:nth-child(1):hover {
+  background: orange;
+  color: white;
+}
+.dropdown-item:nth-child(2):hover {
+  background: #ca3e47;
+  color: white;
+}
+.edit-textarea {
+  width: 100%;
+  height: 700px;
+}
+.img-size {
+  height: 200px;
+  object-fit: cover;
+  width: 100%;
+}
+.blog-overflow {
+  height: 300px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+a {
+  text-decoration: none;
+}
+.icon-size {
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+.request-dropdown {
+  height: 300px;
+  overflow: auto;
+}
+
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+}
+

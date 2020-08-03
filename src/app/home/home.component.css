@@ -1,0 +1,56 @@
+.orange-border {
+  border-left: 6px solid #f88020;
+}
+.heading-font-size {
+  font-size: 2rem;
+}
+.article-heading-font-size {
+  font-size: 2.3rem;
+}
+.bg-simple {
+  background: #eeeeee;
+}
+.img-background {
+  background: url("../../assets/skylinePng.png");
+  background-repeat: no-repeat;
+  background-position-x: right;
+  background-attachment: fixed;
+}
+.img-size{
+  height: auto;
+  object-fit: cover;
+  width: auto;
+}
+.blog-overflow{
+  height: auto;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+a{
+  text-decoration: none;
+}
+.icon-size{
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+.rounded-corners{
+  border-radius: 1rem;
+}
+.rounded-corners:hover{
+  border: 1px solid gray;
+}
+.rem-1{
+  font-size: 1.2rem;
+}
+.side-img-size{
+  object-fit: cover;
+}
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+}

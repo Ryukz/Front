@@ -1,0 +1,149 @@
+<app-navbar
+  [homepageActive]="true"
+  (searchOutputEvent)="getSearchData($event)"
+></app-navbar>
+<video autoplay muted loop id="myVideo">
+  <source src="https://cdn.videvo.net/videvo_files/video/free/2019-09/originalContent/190828_07_MarinaBayatNightDrone_UHD_01.mp4" type="video/mp4">
+</video>
+<div class="container p-5">
+  <div class="container-fluid border-bottom mb-5">
+    <div class="heading-font-size font-weight-bold pl-2 orange-border mb-5 text-white" >
+      Users you can follow
+    </div>
+    <div  class="d-flex flex-wrap mt-2 border-bottom pb-3">
+      <div *ngFor="let i of users; let ind = index;">
+        <div  *ngIf="ind < 8" class=" p-3 bg-none mr-3 mb-3  rounded-corners bg-white" style="font-size: 1.2rem" >
+          <div class="font-weight-bolder text-muted"><a href="/home/user-details/{{ i.id }}">{{ i.userName }}</a></div>
+          <div class="text-muted">{{ i.firstName }} {{ i.lastName }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div *ngIf="!searchElement" class="col-sm-3">
+      <div class="heading-font-size font-weight-bold pl-2 orange-border text-white">
+        Hot Topics
+      </div>
+      <div class="d-flex flex-wrap mt-2 border-bottom pb-3">
+        <div *ngFor="let i of category; let ind = index" class="m-2">
+          <div id="{{ ind }}" *ngIf="ind < 10">
+            <div class="rounded-corners bg-white p-2 d-flex">
+              <div (click)="remove(ind)" class="p-1">&times;</div>
+              <div class="text-muted ml-3 p-1" (click)="searchByCategory(i)">
+                {{ i }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="friendBlog.length == 0" class="text-center  text-white">
+        Follow people to view thier activity
+      </div>
+
+      <div *ngIf="friendBlog.length != 0" class="border bg-light">
+        <div class="heading-font-size font-weight-bold text-center mt-5 mb-2">
+          From your friends with <span class="text-danger">LOVE</span>
+        </div>
+
+        <div *ngFor="let i of friendBlog; let ind = index">
+          <div *ngIf="ind < 10" class="border m-2 bg-white">
+            <img
+              *ngIf="i.imageurl"
+              src="{{ i.imageurl }}"
+              class="img-fluid side-img-size"
+            />
+            <div class="font-weight-bold p-2">
+              <a href="/home/display-blog/{{ i.blogId }}">{{ i.title }}</a>
+            </div>
+            <div class="p-2 text-muted text-right">
+              {{ i.date | date: "mediumDate" }}
+            </div>
+            <div class="p-2 text-right">
+              <a href="/home/user-details/{{ i.user.id }}"
+                ><i>-{{ i.user.userName }}</i></a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-9">
+      <!--get recents-->
+      <div class="container">
+        <div
+          *ngIf="!searchElement && !selectCategory"
+          class="heading-font-size font-weight-bold pl-2 orange-border text-white"
+        >
+          Recently Added
+        </div>
+
+        <div
+          *ngIf="searchElement"
+          class="heading-font-size font-weight-bold pl-2 orange-border text-white"
+        >
+          Search Results ..
+        </div>
+
+        <div
+          *ngIf="selectCategory && !searchElement"
+          class="heading-font-size font-weight-bold pl-2 orange-border text-white"
+        >
+          Your selection
+        </div>
+
+        <div class="container">
+          <div
+            *ngFor="let i of blogs; let ind = index"
+            class="container-fluid mr-4"
+          >
+            <div
+              *ngIf="ind < 4"
+              class="container p-4 border mt-5 blog-card mb-4 bg-white shadow"
+            >
+              <a href="/home/display-blog/{{ i.blogId }}">
+                <h2
+                  class="article-heading-font-size  font-weight-bolder text-center p-3"
+                >
+                  {{ i.title }}
+                </h2></a
+              >
+
+              <img
+                *ngIf="i.imageurl"
+                src="{{ i.imageurl }}"
+                class="img-fluid img-size"
+              />
+              <div class="container text-muted  blog-overflow p-3">
+                {{ i.blog }}
+              </div>
+
+              <div class="container text-muted text-right mt-2">
+                {{ i.date | date: "mediumDate" }}
+              </div>
+
+              <div class="container text-muted text-right mt-2">
+                <a href="/home/user-details/{{ i.user.id }}"
+                  ><i>-{{ i.user.userName }}</i></a
+                >
+              </div>
+
+              <div class="container bg-light d-flex mt-5">
+                <div (click)="likeBlog(i.blogId)" class="p-3">
+                  <img
+                    [src]="disliked"
+                    class="img-fluid icon-size"
+                    [id]="i.blogId"
+                  />
+                  <div class="text-muted">{{ i.likes }} Likes</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

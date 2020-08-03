@@ -1,0 +1,20 @@
+input{
+    margin-bottom: 1rem;
+    border-radius: 100px;
+}
+.linear-grad{
+    /*background: linear-gradient(#940a37,#fad6d6);*/
+  width: 90rem;
+}
+.small-font{
+    font-size: 1.2rem;
+}
+
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+}

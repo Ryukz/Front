@@ -1,0 +1,75 @@
+<app-navbar></app-navbar>
+<video autoplay muted loop id="myVideo">
+  <source src="https://cdn.videvo.net/videvo_files/video/free/2019-09/originalContent/190828_27_SuperTrees_HD_17.mp4" type="video/mp4">
+</video>
+<div class="container-fluid p-5 linear-grad">
+
+  <h1 class="display-4 text-light mb-4 text-left">Edit Profile</h1>
+  <div class="container-fluid ">
+    <div></div>
+    <div class="container-fluid border bg-light p-5 shadow-lg col-sm-6">
+      <div class="ml-1 small-font">Firstname</div>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="firstname"
+        [(ngModel)]="firstname"
+        [ngModelOptions]="{ standalone: true }"
+      />
+      <div class="ml-1 small-font">Lastname</div>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="lastname"
+        [(ngModel)]="lastname"
+        [ngModelOptions]="{ standalone: true }"
+      />
+      <div class="ml-1 small-font">Username</div>
+      <div class="text-muted font-weight-bold mb-2">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="username"
+          [(ngModel)]="username"
+          [ngModelOptions]="{ standalone: true }"
+        />
+      </div>
+      <div class="ml-1 small-font">Your bio</div>
+      <div class="text-muted mb-5">
+        <textarea
+          class="p-5"
+          placeholder="your bio"
+          [(ngModel)]="bio"
+          [ngModelOptions]="{ standalone: true }"
+        ></textarea>
+      </div>
+      <div class="ml-1 small-font">Email</div>
+      <input
+        type="email"
+        class="form-control"
+        placeholder="email"
+        [(ngModel)]="email"
+        [ngModelOptions]="{ standalone: true }"
+      />
+      <div class="ml-1 small-font">Mobile Number</div>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="mobile"
+        [(ngModel)]="mobile"
+        [ngModelOptions]="{ standalone: true }"
+      />
+      <div class="ml-1 small-font">Password</div>
+      <input
+        type="password"
+        class="form-control mb-5"
+        placeholder="password"
+        [(ngModel)]="password"
+        [ngModelOptions]="{ standalone: true }"
+      />
+
+      <button type="text" class="btn btn-info rounded-0 p-2" style="width: 100%;" (click)="updateProfile()">Update Profile</button>
+    </div>
+    <div class="col-sm-4"></div>
+  </div>
+</div>

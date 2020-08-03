@@ -1,0 +1,61 @@
+/*.img-background{*/
+/*    background: url("https://vistapointe.net/images/working-8.jpg");*/
+/*    height: 500px;*/
+/*    background-repeat: no-repeat;*/
+/*}*/
+.custom-pos{
+    top: 250px;
+    width:40rem;
+    left: 2%;
+}
+.input-width{
+    width: 30rem;
+}
+.small-font{
+    font-size: 1.3rem;
+}
+.input{
+    color: #333333;
+}
+.bg-custom{
+    background: white;
+}
+.gray-border{
+    border: 1px solid gray;
+  border-radius: 25px;
+}
+.arrow-size{
+    font-size: 3rem;
+    cursor: pointer;
+}
+.arrow-size:hover{
+    color: blue;
+    background: rgba(255, 255, 255, 0.2);
+
+}
+.rem-8{
+    font-size: 1.2rem;
+}
+
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+}
+.round{
+  border-radius: 25px;
+}
+.bottom-blue-border {
+  border-bottom: 4px solid #64b2cd;
+}
+.signup-heading{
+  font-size: 3.5rem;
+}
+.bottom-border{
+  border-bottom: 4px solid #f88020;
+}
+
+
